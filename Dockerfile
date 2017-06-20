@@ -7,11 +7,11 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-RUN apt-get update \
-  && apt-get install -y software-properties-common \
-  && add-apt-repository -y ppa:fkrull/deadsnakes \
-  && apt-get update \
-  && apt-get install -y \
+RUN sudo apt-get update \
+  && sudo apt-get install -y software-properties-common \
+  && sudo add-apt-repository -y ppa:fkrull/deadsnakes \
+  && sudo apt-get update \
+  && sudo apt-get install -y \
     curl \
     git-all \
     python3.6 \
