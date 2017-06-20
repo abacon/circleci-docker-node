@@ -22,4 +22,6 @@ RUN apt-get update \
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x > /tmp/install_node \
   && bash /tmp/install_node \
-  && apt-get install -y nodejs
+  && apt-get install -y nodejs \
+  && apt-get clean \
+  && rm /tmp/install_node
