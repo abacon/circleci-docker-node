@@ -7,6 +7,8 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
+ENV PATH "${PATH}:/opt/aws_cli_venv/bin"
+
 RUN apt-get update \
   && apt-get install -y software-properties-common \
   && add-apt-repository -y ppa:fkrull/deadsnakes \
@@ -25,3 +27,7 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x > /tmp/install_node \
   && apt-get install -y nodejs \
   && apt-get clean \
   && rm /tmp/install_node
+
+RUN python3.6 -m venv /opt/aws_cli_venv \
+  && /opt/aws_cli_venv/bin/pip install --upgrade awscli \
+  && rm -r /root/.cache/pip
