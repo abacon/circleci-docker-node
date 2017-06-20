@@ -1,4 +1,4 @@
-FROM circleci/node:6.11.0
+FROM ubuntu:14.04.4
 
 MAINTAINER chinesedewey@gmail.com
 
@@ -7,11 +7,11 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-RUN sudo apt-get update \
-  && sudo apt-get install -y software-properties-common \
-  && sudo add-apt-repository -y ppa:fkrull/deadsnakes \
-  && sudo apt-get update \
-  && sudo apt-get install -y \
+RUN apt-get update \
+  && apt-get install -y software-properties-common \
+  && add-apt-repository -y ppa:fkrull/deadsnakes \
+  && apt-get update \
+  && apt-get install -y \
     curl \
     git-all \
     python3.6 \
@@ -20,3 +20,6 @@ RUN sudo apt-get update \
     wget \
   && apt-get clean
 
+RUN curl -sL https://deb.nodesource.com/setup_6.x > /tmp/install_node \
+  && bash /tmp/install_node \
+  && apt-get install -y nodejs
