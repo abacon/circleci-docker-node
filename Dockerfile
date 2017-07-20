@@ -22,7 +22,7 @@ RUN apt-get update \
     wget \
   && apt-get clean
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x > /tmp/install_node \
+RUN curl -sL https://deb.nodesource.com/setup_8.x > /tmp/install_node \
   && bash /tmp/install_node \
   && apt-get install -y nodejs \
   && apt-get clean \
