@@ -7,7 +7,8 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-ENV PATH "${PATH}:/opt/aws_cli_venv/bin"
+ENV NVM_DIR "${HOME}/.nvm"
+ENV PATH "/root/.nvm/versions/node/v8.2.1/bin:${PATH}:/opt/aws_cli_venv/bin"
 
 RUN apt-get update \
   && apt-get install -y software-properties-common \
@@ -24,9 +25,7 @@ RUN apt-get update \
 
 RUN bash -c '\
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash; \
-    export NVM_DIR="$HOME/.nvm"; \
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; \
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"; \
     nvm install v8.2.1; \
     nvm use v8.2.1; \
 '
