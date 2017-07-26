@@ -7,7 +7,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-ENV NVM_DIR "${HOME}/.nvm"
+ENV NVM_DIR "/root/.nvm"
 ENV PATH "/root/.nvm/versions/node/v8.2.1/bin:${PATH}:/opt/aws_cli_venv/bin"
 
 RUN apt-get update \
