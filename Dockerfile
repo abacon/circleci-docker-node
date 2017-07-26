@@ -22,9 +22,14 @@ RUN apt-get update \
     wget \
   && apt-get clean
 
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash \
-  && bash -c 'nvm install v8.2.1' \
-  && bash -c 'nvm use v8.2.1'
+RUN bash -c '\
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash; \
+    export NVM_DIR="$HOME/.nvm"; \
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; \
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"; \
+    nvm install v8.2.1; \
+    nvm use v8.2.1; \
+'
 
 RUN python3.6 -m venv /opt/aws_cli_venv \
   && /opt/aws_cli_venv/bin/pip install --upgrade awscli \
