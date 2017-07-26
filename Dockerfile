@@ -22,11 +22,10 @@ RUN apt-get update \
     wget \
   && apt-get clean
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x > /tmp/install_node \
-  && bash /tmp/install_node \
-  && apt-get install -y nodejs \
-  && apt-get clean \
-  && rm /tmp/install_node
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash \
+  && source ~/.bashrc \
+  && nvm install v8.2.1 \
+  && nvm use v8.2.1
 
 RUN python3.6 -m venv /opt/aws_cli_venv \
   && /opt/aws_cli_venv/bin/pip install --upgrade awscli \
