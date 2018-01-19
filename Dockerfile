@@ -8,7 +8,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 ENV NVM_DIR "/root/.nvm"
-ENV PATH "/root/.nvm/versions/node/v8.2.1/bin:${PATH}:/opt/aws_cli_venv/bin"
+ENV PATH "/root/.nvm/versions/node/v8.2.1/bin:${PATH}:/opt/cli_venv/bin"
 
 RUN apt-get update \
   && apt-get install -y software-properties-common \
@@ -30,6 +30,6 @@ RUN bash -c '\
     nvm use v8.2.1; \
 '
 
-RUN python3.6 -m venv /opt/aws_cli_venv \
-  && /opt/aws_cli_venv/bin/pip install --upgrade awscli \
+RUN python3.6 -m venv /opt/cli_venv \
+  && /opt/cli_venv/bin/pip install --upgrade awscli requests \
   && rm -r /root/.cache/pip
