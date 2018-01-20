@@ -12,7 +12,7 @@ ENV PATH "/root/.nvm/versions/node/v8.2.1/bin:${PATH}:/opt/cli_venv/bin"
 
 RUN apt-get update \
   && apt-get install -y software-properties-common \
-  && add-apt-repository -y ppa:fkrull/deadsnakes \
+  && add-apt-repository -y ppa:deadsnakes/ppa \
   && apt-get update \
   && apt-get install -y \
     curl \
