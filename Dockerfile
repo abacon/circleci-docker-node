@@ -21,6 +21,8 @@ RUN apt-get update \
     python3.6-dev \
     python3.6-venv \
     wget \
+# These requirements are needed for running electron headless
+    libgtk2.0-0 libgconf-2-4 libasound2 libxtst6 libxss1 libnss3 xvfb \
   && apt-get clean
 
 RUN bash -c '\
@@ -29,6 +31,9 @@ RUN bash -c '\
     nvm install v8.2.1; \
     nvm use v8.2.1; \
 '
+
+RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O /usr/local/bin/jq \
+  && chmod a+x /usr/local/bin/jq
 
 RUN python3.6 -m venv /opt/cli_venv \
   && /opt/cli_venv/bin/pip install --upgrade awscli requests \
