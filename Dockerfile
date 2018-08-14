@@ -8,7 +8,9 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 ENV NVM_DIR "/root/.nvm"
-ENV PATH "/root/.nvm/versions/node/v8.2.1/bin:${PATH}:/opt/cli_venv/bin"
+ENV NVM_VERSION "0.33.11"
+ENV NODE_VERSION "8.9.4"
+ENV PATH "/root/.nvm/versions/node/v${NODE_VERSION}/bin:${PATH}:/opt/cli_venv/bin"
 
 RUN apt-get update \
   && apt-get install -y software-properties-common \
@@ -26,10 +28,10 @@ RUN apt-get update \
   && apt-get clean
 
 RUN bash -c '\
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash; \
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v${NVM_VERSION}/install.sh | bash; \
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; \
-    nvm install v8.9.4; \
-    nvm use v8.9.4; \
+    nvm install v${NODE_VERSION}; \
+    nvm use v${NODE_VERSION}; \
 '
 
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O /usr/local/bin/jq \
