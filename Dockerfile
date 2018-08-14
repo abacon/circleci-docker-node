@@ -28,8 +28,8 @@ RUN apt-get update \
 RUN bash -c '\
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash; \
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; \
-    nvm install v8.2.1; \
-    nvm use v8.2.1; \
+    nvm install v8.9.4; \
+    nvm use v8.9.4; \
 '
 
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O /usr/local/bin/jq \
