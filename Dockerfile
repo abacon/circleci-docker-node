@@ -28,6 +28,7 @@ RUN apt-get update \
   && apt-get clean
 
 RUN bash -c '\
+    mkdir -p ${NVM_DIR}; \
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v${NVM_VERSION}/install.sh | bash; \
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; \
     nvm install v${NODE_VERSION}; \
