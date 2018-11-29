@@ -30,6 +30,7 @@ RUN bash -c '\
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; \
     nvm install v8.2.1; \
     nvm use v8.2.1; \
+    npm i -g npm; \
 '
 
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 -O /usr/local/bin/jq \
